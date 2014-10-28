@@ -1,8 +1,9 @@
 /** AbstractLand
  *  Provided the abstract class of all land units.
  */
-package monopoly.kernel;
+package monopoly.kernel.land;
 import java.util.Scanner;
+import monopoly.kernel.*;
 
 public abstract class AbstractLand
 {

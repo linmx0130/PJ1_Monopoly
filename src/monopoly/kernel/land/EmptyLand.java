@@ -1,8 +1,9 @@
 /** EmptyLand
  *  the empty land, really empty :)
  */
-package monopoly.kernel;
+package monopoly.kernel.land;
 import java.util.Scanner;
+import monopoly.kernel.*;
 public class EmptyLand extends AbstractLand
 {
 	public EmptyLand(MapManager mapM)
@@ -14,6 +15,6 @@ public class EmptyLand extends AbstractLand
 	public static AbstractLand loader(MapManager mapM, Scanner fin)
 	{
 		EmptyLand ret=new EmptyLand(mapM);
-		return (AbstractLand)ret;
+		return ret;
 	}
 };
