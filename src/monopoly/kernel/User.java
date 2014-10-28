@@ -1,7 +1,9 @@
 /** User class
  * Record the data and manage the actions of user.
  */
+
 package monopoly.kernel;
+
 public class User
 {
 	public static int userCount=0;
