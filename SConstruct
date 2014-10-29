@@ -1,1 +1,1 @@
-Java("bin","src/monopoly/")
+Java("bin","src/")
