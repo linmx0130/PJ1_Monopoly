@@ -28,6 +28,7 @@
 	* MessageManager: 消息管理器，管理展示给用户的提示消息，提供弹出窗口和保存记录的能力。
 1.2.2 UI的扩展模块
 	* BankForm: 银行系统的界面。
+	* LandTradeForm: 买地卖地等与土地贸易有关的东西的界面。
 2 地图文件
 2.1 加载规则
 	地图文件应该由MapManager.loadMap()来加载。而对于地图中每一个特定的单元，MapManager读取了其标示号之后，应当交给该单元的loader()方法来加载。
@@ -38,7 +39,6 @@
 		第一行：单元头
 		单元头包含三个整数typeId,y,x，分别是单元标示号typeId，纵坐标y和横坐标x。
 		接下来是该单元的其他信息，这部分由单元自己的loader()来加载。
-
 2.3 各类地图单元
 	每种地图单元都是AbsractLand的派生类，需要实现arrivedAction和passingAction，同时应当另外实现loader供MapManger调用。
 2.3.1 空土地 EmptyLand
