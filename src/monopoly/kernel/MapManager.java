@@ -9,10 +9,10 @@ import monopoly.kernel.land.*;
 
 public class MapManager
 {
-	private int unitTotal;
-	private int sizeX,sizeY;
-	private AbstractLand[] unitList;
-	private int[][] position;
+	public int unitTotal;
+	public int sizeX,sizeY;
+	public AbstractLand[] unitList;
+	public int[][] position;
 	MapManager()
 	{
 		this.unitTotal=0;
@@ -20,7 +20,7 @@ public class MapManager
 	
 	/** loadMap: load map data from file.
 	 */
-	void loadMap(String fileName) throws Exception
+	public void loadMap(String fileName) throws Exception
 	{
 		Scanner fin=new Scanner(new File(fileName));
 		unitTotal=fin.nextInt();
@@ -40,6 +40,9 @@ public class MapManager
 					break;
 				case 2: //NormalLand
 					unitList[i]=NormalLand.loader(this,fin);
+					break;
+				case 3: //BankSite
+					unitList[i]=BankSite.loader(this,fin);
 					break;
 				default:
 					LogManager.log(LogManager.ERROR,"MapManager",

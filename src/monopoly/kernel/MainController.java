@@ -5,7 +5,7 @@ package monopoly.kernel;
 import monopoly.ui.*;
 public class MainController
 {
-	public static MapManager map;
+	public static MapManager map=new MapManager();
 	public static User[] userList;
 	public static int userTotal;
 	public static void buildUsers(int userTotal)
@@ -14,9 +14,9 @@ public class MainController
 		userList=new User[userTotal];
 		BankSystem.savings=new int[userTotal];
 	}
-	public static void mainLoop()
+	public static void mainLoop() throws Exception
 	{
-		monopoly.ui.InitGame.showInitGameDialog();
+		InitGame.showInitGameDialog();
 	};
 };
 

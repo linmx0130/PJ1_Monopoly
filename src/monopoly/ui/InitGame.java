@@ -6,12 +6,16 @@ import monopoly.kernel.*;
 import java.util.Scanner;
 public class InitGame
 {
-	public static void showInitGameDialog() 
+	public static void showInitGameDialog() throws Exception
 	{
 		Scanner cin=new Scanner(System.in);
 		System.out.println("			$$$ MonoPoly $$$");
 		System.out.println("\t欢迎来到大富翁游戏，在游戏开始之前，您需要做一些设定。");
 
+		//Input map
+		System.out.print("请输入地图文件位置：");
+		String mapFileName=cin.nextLine();
+		MainController.map.loadMap(mapFileName);
 		//Input users
 		System.out.print("游戏人数：");
 		MainController.buildUsers(Integer.parseInt(cin.nextLine()));
