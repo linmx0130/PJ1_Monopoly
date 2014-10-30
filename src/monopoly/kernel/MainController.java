@@ -12,6 +12,7 @@ public class MainController
 	{
 		MainController.userTotal=userTotal;
 		userList=new User[userTotal];
+		BankSystem.savings=new int[userTotal];
 	}
 	public static void mainLoop()
 	{
