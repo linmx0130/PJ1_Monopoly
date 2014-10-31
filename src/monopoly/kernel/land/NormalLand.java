@@ -20,17 +20,27 @@ public class NormalLand extends AbstractLand
 		this.name=name;
 		this.owner=-1;
 		this.basicPrice=basicPrice;
-		this.level=0;
+		this.level=1;
 		this.street=street;
+	}
+	//getBuyingPrice
+	//it will return the price for buying this land
+	public int getBuyingPrice()
+	{
+		return level*basicPrice;
+	}
+	//getArrivedPrice
+	//it will return the price for arriving at it
+	public int getArrivedPrice()
+	{
+		//TODO
+		return (int)(level*basicPrice*0.3);
 	}
 	public void arrivedAction(int userId)
 	{
 		//TODO
 	}
-	public void passingAction(int userId)
-	{
-		//TODO
-	}
+	public void passingAction(int userId){}
 	public static AbstractLand loader(MapManager mapM, Scanner fin)
 	{
 		String name=fin.next();

@@ -6,28 +6,28 @@ import monopoly.kernel.LogManager;
 public class MessageManager
 {
 	// normal message
-	public final int MESSAGE=1;
+	public final static int MESSAGE=1;
 	// some user operation is illegal
-	public final int WARNING=2;
+	public final static int WARNING=2;
 	// program error
-	public final int ERROR=3;
+	public final static int ERROR=3;
 	// showMessage
 	// print the message and store the message(TODO)
-	public static void showMessage(int typeId,String source String message)
+	public static void showMessage(int typeId,String source, String message)
 	{
-		String buffer;
+		String buffer="";
 		switch (typeId)
 		{
-			case MESSAGE:
+			case MessageManager.MESSAGE:
 				break;
-			case WARNING:
+			case MessageManager.WARNING:
 				buffer="【警告】";
 				break;
-			case ERROR:
+			case MessageManager.ERROR:
 				buffer="【错误】";
 				break;
 			default:
-			LogManager.log("MessageManager","Illegal arguments!");
+			LogManager.log(LogManager.ERROR,"MessageManager","Illegal arguments!");
 		}
 		buffer+=message;
 		System.out.println(buffer);
