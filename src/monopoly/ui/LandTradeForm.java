@@ -7,11 +7,12 @@ import monopoly.kernel.land.NormalLand;
 import java.util.Scanner;
 public class LandTradeForm
 {
-	// buyLandDialog
-	// Dealing with the request of buying land.
-	// true -> bought it
-	// false -> didn't buy it
-	public boolean buyLandDialog(int userId, int landId)
+	/** buyLandDialog
+	 *  Dealing with the request of buying land
+	 *  true -> bought it
+	 *  false -> didn't buy it
+	 */
+	public static boolean buyLandDialog(int userId, int landId)
 	{
 		if (MainController.map.unitList[landId].typeId!=2)
 		{
@@ -45,5 +46,32 @@ public class LandTradeForm
 			return true;
 		}
 		return false;
+	}
+	/** payArrivedCose
+	 *  the method provided a way to pay arrived cost
+	 */
+	public static void payArrivedCost(int userId,int landId)
+	{
+		if (MainController.map.unitList[landId].typeId!=2)
+		{
+			LogManager.log(LogManager.ERROR,"UI::LandTradeForm",
+						"use buyLandDialog on wrong land!");
+			System.exit(1);
+		}
+		NormalLand nowLand=(NormalLand)MainController.map.unitList[landId];
+		if (nowLand.owner==-1)
+		{
+			LogManager.log(LogManager.ERROR,"UI::LandTradeForm",
+						"use buyLandDialog on wrong land!");
+			System.exit(1);
+		}
+		User nowUser=MainController.userList[userId];
+		while (nowUser.getCash()<nowLand.getArrivedPrice())
+		{//TODO
+		}
+		nowUser.modifyCash(-nowLand.getArrivedPrice());
+		MessageManager.showMessage(MessageManager.MESSAGE,"UI::LandTradeForm",
+			nowUser.getName()+"到达"+nowLand.name+"，向地主"+MainController.userList[nowLand.owner].getName()+
+			"支付参观费"+nowLand.getArrivedPrice()+"元");
 	}
 }

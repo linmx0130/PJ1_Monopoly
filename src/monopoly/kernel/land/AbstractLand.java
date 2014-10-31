@@ -11,10 +11,13 @@ public abstract class AbstractLand
 	public int typeId;
 	// mapM: the reference of map manager
 	private MapManager mapM;
-	public AbstractLand(MapManager mapM, int typeId)
+	// landId: the id in map
+	public int landId;
+	public AbstractLand(MapManager mapM, int typeId, int landId)
 	{
 		this.typeId=typeId;
 		this.mapM=mapM;
+		this.landId=landId;
 	}
 	/**
 	 * arrived Action: the action when a user arrvied at this land.
@@ -25,6 +28,6 @@ public abstract class AbstractLand
 	 */
 	public abstract void passingAction(int userId);
 	/* PAY ATTENTION!
-	 * All land classes should implentment loader(MapManager mapM, Scanner fin) method 
+	 * All land classes should implentment loader(MapManager mapM, Scanner fin, int landId) method 
 	 */
 };

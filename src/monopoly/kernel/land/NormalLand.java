@@ -4,6 +4,7 @@
 package monopoly.kernel.land;
 import java.util.Scanner;
 import monopoly.kernel.*;
+import monopoly.ui.LandTradeForm;
 
 public class NormalLand extends AbstractLand
 {
@@ -13,10 +14,10 @@ public class NormalLand extends AbstractLand
 	public int basicPrice;
 	public int level;
 	public int street;
-	public NormalLand(MapManager mapM, int typeId, 
+	public NormalLand(MapManager mapM, int typeId, int landId,
 					String name, int basicPrice, int street)
 	{
-		super(mapM,typeId);
+		super(mapM,typeId,landId);
 		this.name=name;
 		this.owner=-1;
 		this.basicPrice=basicPrice;
@@ -38,15 +39,21 @@ public class NormalLand extends AbstractLand
 	}
 	public void arrivedAction(int userId)
 	{
-		//TODO
+		if (owner==-1)
+		{
+			LandTradeForm.buyLandDialog(userId,landId);
+		}else
+		{
+			LandTradeForm.payArrivedCost(userId,landId);
+		}
 	}
 	public void passingAction(int userId){}
-	public static AbstractLand loader(MapManager mapM, Scanner fin)
+	public static AbstractLand loader(MapManager mapM, Scanner fin,int landId)
 	{
 		String name=fin.next();
 		int basicPrice=fin.nextInt();
 		int street=fin.nextInt();
-		NormalLand ret=new NormalLand(mapM,2,name,basicPrice,street);
+		NormalLand ret=new NormalLand(mapM,2,landId,name,basicPrice,street);
 		return ret;
 	}
 }

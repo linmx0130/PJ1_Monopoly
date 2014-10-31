@@ -18,7 +18,19 @@ public class MapManager
 	{
 		this.unitTotal=0;
 	}
-	
+	/** userWalk
+	 *  ask user to walk for step
+	 */
+	public void userWalk(int userId, int step)
+	{
+		for (int i=1;i<=step;++i)
+		{
+			++userPosition[userId];
+			if (userPosition[userId]>=unitTotal) userPosition[userId]-=unitTotal;
+			unitList[userPosition[userId]].passingAction(userId);
+		}
+		unitList[userPosition[userId]].arrivedAction(userId);
+	}
 	/** loadMap: load map data from file.
 	 */
 	public void loadMap(String fileName) throws Exception
@@ -37,13 +49,13 @@ public class MapManager
 			switch (typeId)
 			{
 				case 1: //EmptyLand
-					unitList[i]=EmptyLand.loader(this,fin);
+					unitList[i]=EmptyLand.loader(this,fin,i);
 					break;
 				case 2: //NormalLand
-					unitList[i]=NormalLand.loader(this,fin);
+					unitList[i]=NormalLand.loader(this,fin,i);
 					break;
 				case 3: //BankSite
-					unitList[i]=BankSite.loader(this,fin);
+					unitList[i]=BankSite.loader(this,fin,i);
 					break;
 				default:
 					LogManager.log(LogManager.ERROR,"MapManager",

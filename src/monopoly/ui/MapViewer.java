@@ -55,7 +55,7 @@ public class MapViewer
 	/** showNowMap
 	 *  show the map with user marks
 	 */
-	public static void showNowMap()
+	public static void showNowMap(int userId)
 	{
 		MapManager map=MainController.map;
 		String buffer[][]=new String[map.sizeX][map.sizeY];
@@ -77,13 +77,23 @@ public class MapViewer
 					buffer[x][y]=emptyLandMark;
 					break;
 				case 2: //normal land
-					buffer[x][y]=normalLandMark;
+					if ( ((NormalLand)nowUnit).owner==-1) buffer[x][y]=normalLandMark;
+					else buffer[x][y]=userLandMark[((NormalLand)nowUnit).owner];
 					break;
 				case 3: //bank site
 					buffer[x][y]=bankSiteMark;
 					break;
 			}
 		}
+		for (int i=0;i<MainController.userTotal;++i)
+		{
+			int x=map.position[map.userPosition[i]][0]-1;
+			int y=map.position[map.userPosition[i]][1]-1;
+			buffer[x][y]=userMark[i];
+		}
+		int x=map.position[map.userPosition[userId]][0]-1;
+		int y=map.position[map.userPosition[userId]][1]-1;
+		buffer[x][y]=userMark[userId];
 		for (int i=0;i<map.sizeX;++i)
 		{
 			for (int j=0;j<map.sizeY;++j)

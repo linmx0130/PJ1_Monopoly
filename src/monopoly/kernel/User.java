@@ -49,9 +49,12 @@ MENULOOP:
 					MapViewer.showBasicMap();
 					break;
 				case "2":
-					MapViewer.showBasicMap();
+					MapViewer.showNowMap(id);
 					break;
 				case "0":
+					int step=(int)(Math.random()*6+1);
+					MessageManager.showMessage(MessageManager.MESSAGE,"User",name+"走了"+step+"步！");
+					MainController.map.userWalk(id,step);
 					break ;
 			}
 		} while (!userInput.equals("0"));
