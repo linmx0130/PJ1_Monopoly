@@ -7,6 +7,5 @@ public class MonopolyGame
 	public static void main(String[] args) throws Exception
 	{
 		MainController.mainLoop();
-		
 	}
 };

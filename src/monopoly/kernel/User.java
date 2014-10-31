@@ -3,7 +3,7 @@
  */
 
 package monopoly.kernel;
-
+import monopoly.ui.*;
 public class User
 {
 	public static int userCount=0;
@@ -32,11 +32,28 @@ public class User
 	{
 		this.cash+=d;
 	}
+
 	/**
 	 * control() : call it when it's this user's turn
 	 */
 	public void control()
 	{
-
+		String userInput;
+MENULOOP:
+		do
+		{
+			userInput=UserMenu.showMenu(id);
+			switch (userInput)
+			{
+				case "1":
+					MapViewer.showBasicMap();
+					break;
+				case "2":
+					MapViewer.showBasicMap();
+					break;
+				case "0":
+					break ;
+			}
+		} while (!userInput.equals("0"));
 	}
 }

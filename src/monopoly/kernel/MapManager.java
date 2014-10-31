@@ -13,6 +13,7 @@ public class MapManager
 	public int sizeX,sizeY;
 	public AbstractLand[] unitList;
 	public int[][] position;
+	public int[] userPosition;
 	MapManager()
 	{
 		this.unitTotal=0;
