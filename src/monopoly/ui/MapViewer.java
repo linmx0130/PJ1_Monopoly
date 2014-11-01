@@ -11,6 +11,8 @@ public class MapViewer
 	private final static String normalLandMark="◎ ";
 	private final static String emptyLandMark="空";
 	private final static String bankSiteMark="￥";
+	private final static String NewsSiteMark="新";
+	private final static String LotterySiteMark="彩";
 	/**showBasicMap
 	*  show map without user mark
 	*/
@@ -40,6 +42,12 @@ public class MapViewer
 					break;
 				case 3: //bank site
 					buffer[x][y]=bankSiteMark;
+					break;
+				case 4: //news site
+					buffer[x][y]=NewsSiteMark;
+					break;
+				case 5: //lottery site
+					buffer[x][y]=LotterySiteMark;
 					break;
 			}
 		}
@@ -82,6 +90,12 @@ public class MapViewer
 					break;
 				case 3: //bank site
 					buffer[x][y]=bankSiteMark;
+					break;
+				case 4: //news site
+					buffer[x][y]=NewsSiteMark;
+					break;
+				case 5: //lottery site
+					buffer[x][y]=LotterySiteMark;
 					break;
 			}
 		}

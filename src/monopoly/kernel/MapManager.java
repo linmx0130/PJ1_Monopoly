@@ -57,9 +57,15 @@ public class MapManager
 				case 3: //BankSite
 					unitList[i]=BankSite.loader(this,fin,i);
 					break;
+				case 4: //NewsSite
+					unitList[i]=NewsSite.loader(this,fin,i);
+					break;
+				case 5: //LotterySite
+					unitList[i]=LotterySite.loader(this,fin,i);
+					break;
 				default:
 					LogManager.log(LogManager.ERROR,"MapManager",
-								"Unknow type id of land.");
+								"Unknow type id of land: "+typeId);
 					System.exit(1);
 			}
 		}
