@@ -51,6 +51,9 @@ MENULOOP:
 				case "2":
 					MapViewer.showNowMap(id);
 					break;
+				case "3":
+					UserMenu.showAllProperty();
+					break;
 				case "0":
 					int step=(int)(Math.random()*6+1);
 					MessageManager.showMessage(MessageManager.MESSAGE,"User",name+"走了"+step+"步！");

@@ -92,6 +92,7 @@ public class LandTradeForm
 			MainController.endGame(userId);
 		}
 		nowUser.modifyCash(-nowLand.getArrivedPrice());
+		MainController.userList[nowLand.owner].modifyCash(nowLand.getArrivedPrice());
 		MessageManager.showMessage(MessageManager.MESSAGE,"UI::LandTradeForm",
 			nowUser.getName()+"到达"+nowLand.name+"，向地主"+MainController.userList[nowLand.owner].getName()+
 			"支付参观费"+nowLand.getArrivedPrice()+"元");
