@@ -68,6 +68,20 @@ public class LandTradeForm
 		User nowUser=MainController.userList[userId];
 		while (nowUser.getCash()<nowLand.getArrivedPrice())
 		{
+			//use the savings
+			if (BankSystem.savings[userId]>0)
+			{
+				if (BankSystem.savings[userId]+nowUser.getCash()
+					<nowLand.getArrivedPrice())
+				{
+					BankSystem.withdraw(userId,BankSystem.savings[userId]);
+				}
+				else
+				{
+					BankSystem.withdraw(userId,nowLand.getArrivedPrice()-nowUser.getCash());
+				}
+				continue;
+			}
 			if (!mortgageLand(userId,true))
 			{
 				break;
@@ -127,5 +141,12 @@ public class LandTradeForm
 			((NormalLand)MainController.map.unitList[choose]).owner=-1;
 			return true;
 		}while (true);
+	}
+	/** levelUpLand
+	 *  level up a land
+	 */
+	public static void levelUpLand(int userId,int landId)
+	{
+		//TODO
 	}
 }

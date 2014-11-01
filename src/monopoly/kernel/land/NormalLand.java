@@ -44,7 +44,10 @@ public class NormalLand extends AbstractLand
 			LandTradeForm.buyLandDialog(userId,landId);
 		}else
 		{
-			LandTradeForm.payArrivedCost(userId,landId);
+			if (owner!= userId) 
+				LandTradeForm.payArrivedCost(userId,landId);
+			else
+				LandTradeForm.levelUpLand(userId,landId);
 		}
 	}
 	public void passingAction(int userId){}

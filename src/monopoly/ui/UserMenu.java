@@ -23,4 +23,11 @@ public class UserMenu
 		System.out.print("请输入序号：");
 		return cin.next();
 	};
+	/** showAllProperty
+	 *  show the list of all users' properties
+	 */
+	public static void showAllProperty()
+	{
+		//TODO
+	}
 };

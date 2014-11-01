@@ -54,6 +54,6 @@ public class BankSystem
 	// involked when users passing the bank
 	public static void bankSiteAction(int userId)
 	{
-		//TODO	
+		BankForm.showBankForm(userId);
 	}
 }
