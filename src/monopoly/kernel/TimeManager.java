@@ -51,6 +51,7 @@ public class TimeManager
 	public static void endMonthAction()
 	{
 		BankSystem.generateInterest();
+		LotterySystem.publishNormalBet();
 	};
 	/** newDay
 	 *  Only be called by MainController to start a new day
