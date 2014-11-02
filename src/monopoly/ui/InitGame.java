@@ -32,7 +32,7 @@ public class InitGame
 		{
 			MainController.userList[i].modifyCash(cashAtFirst);
 		}
-
 		System.out.println("配置结束，游戏即将开始！");
+		CardSystem.Init();
 	}
 }

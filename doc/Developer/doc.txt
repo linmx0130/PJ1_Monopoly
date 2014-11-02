@@ -20,10 +20,12 @@
 	* BankSite: 银行分行，详见2.3.3
 	* NewsSite: 新闻点，详见2.3.4
 	* LotterySite: 彩票站，详细见2.3.5
+	* FreeCardSpot: 赠卡点，详细见2.3.6
 1.1.3 功能设施
 	功能设施提供各种特殊事件的触发者，如银行、各种时间卡等。
 	* BankSystem: 银行系统，提供存取款业务的底层逻辑单元。
 	* LotterySystem: 提供投注彩票的功能。
+	* CardSystem: 道具卡系统，管理所有道具卡的所有权情况及效果。
 1.2 UI的结构
 	本项目的UI是在终端基础之上的，同时为了考虑到未来设计GUI的需要，将UI划分为基本的几个小模块来实现。UI设计应当尽量考虑可重写，尽可能提供隐藏了细节的UI方法。
 1.2.1 UI的基础模块
@@ -35,6 +37,7 @@
 	* BankForm: 银行系统的界面。
 	* LandTradeForm: 买地卖地等与土地贸易有关的东西的界面。
 	* NewsForm: 新闻点的界面。
+
 2 地图文件
 2.1 加载规则
 	地图文件应该由MapManager.loadMap()来加载。而对于地图中每一个特定的单元，MapManager读取了其标示号之后，应当交给该单元的loader()方法来加载。
@@ -46,7 +49,7 @@
 		单元头包含三个整数typeId,y,x，分别是单元标示号typeId，纵坐标y和横坐标x。
 		接下来是该单元的其他信息，这部分由单元自己的loader()来加载。
 2.3 各类地图单元
-	每种地图单元都是AbsractLand的派生类，需要实现arrivedAction和passingAction，同时应当另外实现loader供MapManger调用。
+	每种地图单元都是AbstractLand的派生类，需要实现arrivedAction和passingAction，同时应当另外实现loader供MapManger调用。
 2.3.1 空土地 EmptyLand
 	空土地的typeId=1。
 	它不具备任何特定的信息，不触发任何事件，仅仅是空土地而已。
@@ -73,3 +76,13 @@
 2.3.5 彩票站 LotterySite
 	彩票站的typeId=5
 	它将把请求交给彩票系统处理。
+2.3.6 赠卡点 FreeCardSpot
+	赠卡点的typeId=6
+	它提供赠卡功能，向玩家免费发放道具卡。
+
+3 道具卡
+	道具卡系统由CardSystem来支持，它管理所有道具卡的所有权及效果使用。每个道具卡类都是AbstractCard的派生类，需要实现effectAction方法。而该方法由CardSystem来调用。每次当玩家发动一个道具卡，如果该道具卡是立即效果则立即发动，不是立即效果则应当放入发动队列，CardSystem管理所有发动队列中的效果的发动情况。
+3.0 滞留卡 StayANightCard
+	滞留卡的typeId=0
+	立即发动，玩家滞留原地。
+

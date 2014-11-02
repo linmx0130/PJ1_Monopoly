@@ -10,11 +10,14 @@ public class User
 	private String name;
 	private int id;
 	private int cash;
+	// used to support stay a night card
+	public boolean stayANight;
 	public User(String name)
 	{
 		this.name=name;
 		this.id=userCount++;
 		this.cash=0;
+		stayANight=false;
 	}
 	public String getName()
 	{
@@ -59,6 +62,15 @@ MENULOOP:
 					MessageManager.showMessage(MessageManager.MESSAGE,"User",name+"走了"+step+"步！");
 					MainController.map.userWalk(id,step);
 					break ;
+			}
+			//used to support stay a night 
+			if (stayANight)
+			{
+				stayANight=false;
+				MessageManager.showMessage(MessageManager.MESSAGE,"User",
+								name+"滞留原地，并重新发动当地效果！");
+				MainController.map.userWalk(id,0);
+				break;
 			}
 		} while (!userInput.equals("0"));
 	}

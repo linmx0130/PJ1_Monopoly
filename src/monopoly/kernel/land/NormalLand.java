@@ -34,8 +34,28 @@ public class NormalLand extends AbstractLand
 	//it will return the price for arriving at it
 	public int getArrivedPrice()
 	{
-		//TODO
-		return (int)(level*basicPrice*0.3);
+		int ret=(int)(getBuyingPrice()*0.3);
+		int count=0;
+COUNT_STREET_LOOP:
+		for (int i=0;i<mapM.unitTotal;++i)
+		{
+			if (mapM.unitList[i].typeId==2)
+			{
+				if (((NormalLand)mapM.unitList[i]).street==this.street)
+				{
+					if (((NormalLand)mapM.unitList[i]).owner==this.owner)
+					{
+						count+=((NormalLand)(mapM.unitList[i])).getBuyingPrice();
+					}else
+					{
+						count=0;
+						break COUNT_STREET_LOOP;
+					}
+				}
+			}
+		}
+		ret+=(int)(0.1*count);
+		return ret;
 	}
 	public void arrivedAction(int userId)
 	{

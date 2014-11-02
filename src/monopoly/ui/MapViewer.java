@@ -13,6 +13,7 @@ public class MapViewer
 	private final static String bankSiteMark="￥";
 	private final static String NewsSiteMark="新";
 	private final static String LotterySiteMark="彩";
+	private final static String FreeCardSpotMark="卡";
 	/**showBasicMap
 	*  show map without user mark
 	*/
@@ -49,6 +50,12 @@ public class MapViewer
 				case 5: //lottery site
 					buffer[x][y]=LotterySiteMark;
 					break;
+				case 6:
+					buffer[x][y]=FreeCardSpotMark;
+					break;
+				default:
+					LogManager.log(LogManager.PANIC,"UI::MapViewer","Illegal unit on map!");
+					System.exit(1);
 			}
 		}
 		for (int i=0;i<map.sizeX;++i)
@@ -97,6 +104,12 @@ public class MapViewer
 				case 5: //lottery site
 					buffer[x][y]=LotterySiteMark;
 					break;
+				case 6:
+					buffer[x][y]=FreeCardSpotMark;
+					break;
+				default:
+					LogManager.log(LogManager.PANIC,"UI::MapViewer","Illegal unit on map!");
+					System.exit(1);
 			}
 		}
 		for (int i=0;i<MainController.userTotal;++i)

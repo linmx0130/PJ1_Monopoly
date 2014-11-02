@@ -21,6 +21,7 @@ public class MainController
 		map.userPosition=new int[userTotal];
 		inGame=new boolean[userTotal];
 		for (int i=0;i<userTotal;++i) inGame[i]=true;;
+		CardSystem.cardProperty=new int[userTotal][CardSystem.CARD_TOTAL];
 	}
 	/** endGame
 	 *  a user give up game

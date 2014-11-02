@@ -63,6 +63,9 @@ public class MapManager
 				case 5: //LotterySite
 					unitList[i]=LotterySite.loader(this,fin,i);
 					break;
+				case 6: //FreeCardSpot
+					unitList[i]=FreeCardSpot.loader(this,fin,i);
+					break;
 				default:
 					LogManager.log(LogManager.ERROR,"MapManager",
 								"Unknow type id of land: "+typeId);

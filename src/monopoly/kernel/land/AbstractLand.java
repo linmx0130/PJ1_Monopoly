@@ -10,7 +10,7 @@ public abstract class AbstractLand
 	//typeId: the type id of this kind of land
 	public int typeId;
 	// mapM: the reference of map manager
-	private MapManager mapM;
+	public MapManager mapM;
 	// landId: the id in map
 	public int landId;
 	public AbstractLand(MapManager mapM, int typeId, int landId)
