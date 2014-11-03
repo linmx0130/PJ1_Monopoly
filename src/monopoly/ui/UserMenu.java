@@ -21,6 +21,7 @@ public class UserMenu
 		System.out.println("  1.查看原始地图");
 		System.out.println("  2.查看当前地图");
 		System.out.println("  3.查看所有玩家的资产");
+		System.out.println("  4.使用效果卡");
 		System.out.println("  0.心满意足，扔骰子前进！");
 		System.out.print("请输入序号：");
 		return cin.next();

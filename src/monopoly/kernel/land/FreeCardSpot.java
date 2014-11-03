@@ -10,14 +10,10 @@ public class FreeCardSpot extends AbstractLand
 {
 	// the sum of cardAppearRate should be 1
 	public final double[] cardAppearRate=
-	{1.0};
+	{0.5,0.5};
 	// the card to give
 	public final int[] cardId=
-	{0};
-	public final String[] cardName=
-	{
-	"滞留卡"
-	};
+	{0,1};
 	public FreeCardSpot(MapManager mapM,int landId)
 	{
 		super(mapM,6,landId);
@@ -33,10 +29,12 @@ public class FreeCardSpot extends AbstractLand
 				chooser-=cardAppearRate[chooseCard];
 			}else break;
 		}
+
+		chooseCard=cardId[chooseCard];
 		CardSystem.cardProperty[userId][chooseCard]++;
 		MessageManager.showMessage(MessageManager.MESSAGE,"FreeCardSpot",
-			"玩家"+MainController.userList[userId].getName()+"幸运的得到了"+cardName[chooseCard]
-			+"一张，其他玩家可要小心咯~");
+			"玩家"+MainController.userList[userId].getName()+"幸运的得到了"+
+			CardSystem.cardName[chooseCard]	+"一张，其他玩家可要小心咯~");
 	};
 	public void passingAction(int userId) {};
 	public static AbstractLand loader(MapManager mapM, Scanner fin,int landId)

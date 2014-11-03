@@ -6,7 +6,7 @@ package monopoly.kernel;
 import java.io.File;
 import java.util.Scanner;
 import monopoly.kernel.land.*;
-
+import monopoly.ui.MessageManager;
 public class MapManager
 {
 	public int unitTotal;
@@ -18,11 +18,38 @@ public class MapManager
 	{
 		this.unitTotal=0;
 	}
+	/** getDistance
+	 *  get the distance between two users
+	 */
+	public int getDistance(int user1,int user2)
+	{
+		if (userPosition[user1]>userPosition[user2])
+		{
+			int k=user1;
+			user1=user2;
+			user2=k;
+		}
+		int ret=userPosition[user2]-userPosition[user1];
+		if (userPosition[user1]+unitTotal-userPosition[user2]< ret)
+		{
+			ret=userPosition[user1]+unitTotal-userPosition[user2];
+		}
+		return ret;
+	}
 	/** userWalk
 	 *  ask user to walk for step
 	 */
 	public void userWalk(int userId, int step)
 	{
+		if (MainController.userList[userId].beTurtle) 
+		{
+			MessageManager.showMessage(MessageManager.MESSAGE,"MapManager",
+					"受龟速卡效果影响，"+MainController.userList[userId].getName()+
+					"只能走一步！");
+			step=1;
+		}
+		MessageManager.showMessage(MessageManager.MESSAGE,"User",
+						MainController.userList[userId].getName()+"走了"+step+"步！");
 		for (int i=1;i<=step;++i)
 		{
 			++userPosition[userId];

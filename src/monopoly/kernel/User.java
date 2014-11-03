@@ -12,12 +12,15 @@ public class User
 	private int cash;
 	// used to support stay a night card
 	public boolean stayANight;
+	// the effect of turtleCard
+	public boolean beTurtle;
 	public User(String name)
 	{
 		this.name=name;
 		this.id=userCount++;
 		this.cash=0;
 		stayANight=false;
+		beTurtle=false;
 	}
 	public String getName()
 	{
@@ -57,9 +60,11 @@ MENULOOP:
 				case "3":
 					UserMenu.showAllProperty();
 					break;
+				case "4":
+					CardForm.useCardForm(id);
+					break;
 				case "0":
 					int step=(int)(Math.random()*6+1);
-					MessageManager.showMessage(MessageManager.MESSAGE,"User",name+"走了"+step+"步！");
 					MainController.map.userWalk(id,step);
 					break ;
 			}

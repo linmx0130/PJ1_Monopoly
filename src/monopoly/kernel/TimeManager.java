@@ -59,6 +59,7 @@ public class TimeManager
 	public static void newDay()
 	{
 		nowDay++;
+		CardSystem.maintainCardEffection();
 		int [] nowDate=getNowDate();
 		if (nowDate[2]>=dayOfMonth[nowDate[1]])
 		{
