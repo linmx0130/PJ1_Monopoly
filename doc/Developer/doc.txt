@@ -37,7 +37,7 @@
 	* BankForm: 银行系统的界面。
 	* LandTradeForm: 买地卖地等与土地贸易有关的东西的界面。
 	* NewsForm: 新闻点的界面。
-
+	* CardForm: 与发动效果卡有关的界面。
 2 地图文件
 2.1 加载规则
 	地图文件应该由MapManager.loadMap()来加载。而对于地图中每一个特定的单元，MapManager读取了其标示号之后，应当交给该单元的loader()方法来加载。

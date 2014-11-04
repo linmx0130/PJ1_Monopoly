@@ -7,6 +7,7 @@ import monopoly.kernel.land.NormalLand;
 import java.util.Scanner;
 public class LandTradeForm
 {
+	public static final int LEVEL_LIMIT=6;
 	/** buyLandDialog
 	 *  Dealing with the request of buying land
 	 *  true -> bought it
@@ -148,6 +149,44 @@ public class LandTradeForm
 	 */
 	public static void levelUpLand(int userId,int landId)
 	{
-		//TODO
+		if (MainController.map.unitList[landId].typeId!=2)
+		{
+			MessageManager.showMessage(MessageManager.ERROR,"UI::LandTradeForm",
+							"Illegal request on land level up!");
+			System.exit(1);
+		}
+		if (((NormalLand)MainController.map.unitList[landId]).owner!=userId)
+		{
+			MessageManager.showMessage(MessageManager.ERROR,"UI::LandTradeForm",
+							"Illegal request on land level up!");
+			System.exit(1);
+		}
+		NormalLand nowLand=(NormalLand)MainController.map.unitList[landId];
+		if (nowLand.level==LEVEL_LIMIT)
+		{
+			System.out.println("这块土地已经到达最高级，无法继续升级！");
+			return ;
+		}
+		Scanner cin=new Scanner(System.in);
+		System.out.print("这块土地属于您！\n"+
+						"升级土地"+nowLand.name+"需要支付"+nowLand.basicPrice/2+
+						"元，是否升级？(Y升级，其他放弃)：");
+		String command=cin.next();
+		if (command.equals("Y") || command.equals("y")) 
+		{
+			int needMoney=nowLand.basicPrice/2;
+			if (MainController.userList[userId].getCash()<needMoney)
+			{
+				System.out.println("您现金不足，无法升级土地！");
+				return;
+			}
+			MainController.userList[userId].modifyCash(needMoney);
+			nowLand.level++;
+			System.out.println("升级成功！土地"+nowLand.name+"现在是"+nowLand.level+"级。");
+		}
+		else
+		{
+			return ;
+		}
 	}
 }
