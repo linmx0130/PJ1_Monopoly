@@ -6,11 +6,11 @@ import monopoly.kernel.*;
 import monopoly.kernel.land.*;
 public class MapViewer
 {
-	private final static int landKindTotal=7;
+	private final static int landKindTotal=8;
 	private final static String[] userMark={"α ","β ","γ ","δ ","ε ","ζ ","η ","θ "};
 	private final static String[] userLandMark={"⓪ ","① ","② ","③ ","④ ","⑤ ","⑥ ","⑦ ","⑧ "};
 	private final static String[] landMark=
-	{"","空","◎ ","￥","新","彩","卡","券"};
+	{"","空","◎ ","￥","新","彩","卡","券","道"};
 	/**showBasicMap
 	*  show map without user mark
 	*/
@@ -84,7 +84,7 @@ public class MapViewer
 		{
 			int x=map.position[map.userPosition[i]][0]-1;
 			int y=map.position[map.userPosition[i]][1]-1;
-			buffer[x][y]=userMark[i];
+			if (MainController.inGame[i]) buffer[x][y]=userMark[i];
 		}
 		int x=map.position[map.userPosition[userId]][0]-1;
 		int y=map.position[map.userPosition[userId]][1]-1;

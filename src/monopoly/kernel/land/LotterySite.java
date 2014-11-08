@@ -7,7 +7,7 @@ import monopoly.kernel.*;
 import monopoly.ui.LotteryForm;
 public class LotterySite extends AbstractLand
 {
-	public LotterySite(MapManager mapM,int landId)
+	private LotterySite(MapManager mapM,int landId)
 	{
 		super(mapM,5,landId);
 	}

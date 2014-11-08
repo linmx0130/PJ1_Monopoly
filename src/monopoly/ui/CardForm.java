@@ -29,9 +29,10 @@ public class CardForm
 
 		if (CardSystem.needObject[choose])
 		{
-			System.out.println("请选择受用者：");
+			System.out.println("请选择受用者（仅显示5步内的对手）：");
 			for (int i=0;i<MainController.userTotal;++i)
 			{
+				if (MainController.map.getDistance(userId,i)<=5) 
 				System.out.println("   "+i+"."+MainController.userList[i].getName());
 			}
 			System.out.print("请输入受用者的ID(错误ID为放弃使用)：");

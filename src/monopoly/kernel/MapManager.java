@@ -100,6 +100,9 @@ public class MapManager
 				case 7: //CouponSite
 					unitList[i]=CouponSite.loader(this,fin,i);
 					break;
+				case 8: //CardShop
+					unitList[i]=CardShop.loader(this,fin,i);
+					break;
 				default:
 					LogManager.log(LogManager.ERROR,"MapManager",
 								"Unknow type id of land: "+typeId);

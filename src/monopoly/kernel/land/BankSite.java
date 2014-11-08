@@ -6,7 +6,7 @@ import java.util.Scanner;
 import monopoly.kernel.*;
 public class BankSite extends AbstractLand
 {
-	public BankSite(MapManager mapM,int landId)
+	private BankSite(MapManager mapM,int landId)
 	{
 		super(mapM,3,landId);
 	}

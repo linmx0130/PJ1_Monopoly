@@ -14,7 +14,7 @@ public class FreeCardSpot extends AbstractLand
 	// the card to give
 	public final int[] cardId=
 	{0,1,2};
-	public FreeCardSpot(MapManager mapM,int landId)
+	private FreeCardSpot(MapManager mapM,int landId)
 	{
 		super(mapM,6,landId);
 	}

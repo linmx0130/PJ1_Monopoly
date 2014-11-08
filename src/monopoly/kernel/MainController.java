@@ -3,6 +3,7 @@
  */
 package monopoly.kernel;
 import monopoly.ui.*;
+import monopoly.kernel.land.NormalLand;
 public class MainController
 {
 	public static MapManager map=new MapManager();
@@ -36,6 +37,17 @@ public class MainController
 	public static void endGame(int userId)
 	{
 		inGame[userId]=false;
+		//release all land
+		for (int i=0;i<map.unitTotal;++i)
+		{
+			if (map.unitList[i].typeId==2)
+			{
+				if (((NormalLand)map.unitList[i]).owner==userId)
+				{
+					((NormalLand)map.unitList[i]).owner=-1;
+				}
+			}
+		}
 	}
 	public static void mainLoop() throws Exception
 	{
