@@ -18,7 +18,14 @@ public class MainController
 		MainController.userTotal=userTotal;
 		userList=new User[userTotal];
 		BankSystem.savings=new int[userTotal];
+
 		map.userPosition=new int[userTotal];
+		map.userDirection=new int[userTotal];
+		for (int i=0;i<userTotal;++i)
+		{
+			map.userDirection[i]=1;
+		}
+		
 		inGame=new boolean[userTotal];
 		for (int i=0;i<userTotal;++i) inGame[i]=true;;
 		CardSystem.cardProperty=new int[userTotal][CardSystem.CARD_TOTAL];

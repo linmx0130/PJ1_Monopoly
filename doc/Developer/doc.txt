@@ -21,6 +21,7 @@
 	* NewsSite: 新闻点，详见2.3.4
 	* LotterySite: 彩票站，详细见2.3.5
 	* FreeCardSpot: 赠卡点，详细见2.3.6
+	* CouponSite: 赠券点，详细见2.3.7
 1.1.3 功能设施
 	功能设施提供各种特殊事件的触发者，如银行、各种时间卡等。
 	* BankSystem: 银行系统，提供存取款业务的底层逻辑单元。
@@ -79,6 +80,8 @@
 2.3.6 赠卡点 FreeCardSpot
 	赠卡点的typeId=6
 	它提供赠卡功能，向玩家免费发放道具卡。
+2.3.7 赠券点 CouponSite
+	赠权点的typeId=7，它提供向玩家赠与点券的功能。
 
 3 道具卡
 	道具卡系统由CardSystem来支持，它管理所有道具卡的所有权及效果使用。每个道具卡类都是AbstractCard的派生类，需要实现effectAction方法。而该方法由CardSystem来调用。每次当玩家发动一个道具卡，如果该道具卡是立即效果则立即发动，不是立即效果则应当放入发动队列，CardSystem管理所有发动队列中的效果的发动情况，同时应当检查卡的发动条件是否满足。
@@ -86,5 +89,8 @@
 	滞留卡的typeId=0
 	立即发动，玩家滞留原地。具体效果由User的control来实现。
 3.1 龟速卡 TurtleCard
-		龟速卡的typeId=1
-		龟速卡的效果需要User类提供龟速操作开关，由MapManager.userWalk来实现效果。
+	龟速卡的typeId=1
+	龟速卡的效果需要User类提供龟速操作开关，由MapManager.userWalk来实现效果。
+3.2 转向卡 TurnAroundCard
+	转向卡的typeId=2
+	转向卡的效果需要MapManager类提供方向操控userDirecion，通过值正负实现方向效果。

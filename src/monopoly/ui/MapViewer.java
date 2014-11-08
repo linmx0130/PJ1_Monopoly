@@ -6,14 +6,11 @@ import monopoly.kernel.*;
 import monopoly.kernel.land.*;
 public class MapViewer
 {
+	private final static int landKindTotal=7;
 	private final static String[] userMark={"α ","β ","γ ","δ ","ε ","ζ ","η ","θ "};
 	private final static String[] userLandMark={"⓪ ","① ","② ","③ ","④ ","⑤ ","⑥ ","⑦ ","⑧ "};
-	private final static String normalLandMark="◎ ";
-	private final static String emptyLandMark="空";
-	private final static String bankSiteMark="￥";
-	private final static String NewsSiteMark="新";
-	private final static String LotterySiteMark="彩";
-	private final static String FreeCardSpotMark="卡";
+	private final static String[] landMark=
+	{"","空","◎ ","￥","新","彩","卡","券"};
 	/**showBasicMap
 	*  show map without user mark
 	*/
@@ -33,27 +30,11 @@ public class MapViewer
 			AbstractLand nowUnit=map.unitList[i];
 			int x=map.position[i][0]-1;
 			int y=map.position[i][1]-1;
-			switch (nowUnit.typeId)
+			if (nowUnit.typeId<=landKindTotal)
 			{
-				case 1: //empty land
-					buffer[x][y]=emptyLandMark;
-					break;
-				case 2: //normal land
-					buffer[x][y]=normalLandMark;
-					break;
-				case 3: //bank site
-					buffer[x][y]=bankSiteMark;
-					break;
-				case 4: //news site
-					buffer[x][y]=NewsSiteMark;
-					break;
-				case 5: //lottery site
-					buffer[x][y]=LotterySiteMark;
-					break;
-				case 6:
-					buffer[x][y]=FreeCardSpotMark;
-					break;
-				default:
+				buffer[x][y]=landMark[nowUnit.typeId];
+			}else
+			{
 					LogManager.log(LogManager.PANIC,"UI::MapViewer","Illegal unit on map!");
 					System.exit(1);
 			}
@@ -86,31 +67,18 @@ public class MapViewer
 			AbstractLand nowUnit=map.unitList[i];
 			int x=map.position[i][0]-1;
 			int y=map.position[i][1]-1;
-			switch (nowUnit.typeId)
+			if (nowUnit.typeId<=landKindTotal)
 			{
-				case 1: //empty land
-					buffer[x][y]=emptyLandMark;
-					break;
-				case 2: //normal land
-					if ( ((NormalLand)nowUnit).owner==-1) buffer[x][y]=normalLandMark;
-					else buffer[x][y]=userLandMark[((NormalLand)nowUnit).owner];
-					break;
-				case 3: //bank site
-					buffer[x][y]=bankSiteMark;
-					break;
-				case 4: //news site
-					buffer[x][y]=NewsSiteMark;
-					break;
-				case 5: //lottery site
-					buffer[x][y]=LotterySiteMark;
-					break;
-				case 6:
-					buffer[x][y]=FreeCardSpotMark;
-					break;
-				default:
-					LogManager.log(LogManager.PANIC,"UI::MapViewer","Illegal unit on map!");
-					System.exit(1);
+				buffer[x][y]=landMark[nowUnit.typeId];
 			}
+			else
+			{
+				LogManager.log(LogManager.PANIC,"UI::MapViewer","Illegal unit on map!");
+				System.exit(1);
+			}
+			if (nowUnit.typeId==2)
+			if ( ((NormalLand)nowUnit).owner==-1) buffer[x][y]=landMark[2];
+			else buffer[x][y]=userLandMark[((NormalLand)nowUnit).owner];
 		}
 		for (int i=0;i<MainController.userTotal;++i)
 		{

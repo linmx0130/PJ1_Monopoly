@@ -14,6 +14,9 @@ public class MapManager
 	public AbstractLand[] unitList;
 	public int[][] position;
 	public int[] userPosition;
+	//the directions of users
+	//1 is positive direction and -1 is negative direction
+	public int[] userDirection;
 	MapManager()
 	{
 		this.unitTotal=0;
@@ -52,8 +55,9 @@ public class MapManager
 						MainController.userList[userId].getName()+"走了"+step+"步！");
 		for (int i=1;i<=step;++i)
 		{
-			++userPosition[userId];
+			userPosition[userId]+=userDirection[userId];
 			if (userPosition[userId]>=unitTotal) userPosition[userId]-=unitTotal;
+			if (userPosition[userId]<0) userPosition[userId]+=unitTotal;
 			unitList[userPosition[userId]].passingAction(userId);
 		}
 		unitList[userPosition[userId]].arrivedAction(userId);
@@ -92,6 +96,9 @@ public class MapManager
 					break;
 				case 6: //FreeCardSpot
 					unitList[i]=FreeCardSpot.loader(this,fin,i);
+					break;
+				case 7: //CouponSite
+					unitList[i]=CouponSite.loader(this,fin,i);
 					break;
 				default:
 					LogManager.log(LogManager.ERROR,"MapManager",

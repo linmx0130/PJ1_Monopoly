@@ -10,6 +10,7 @@ public class User
 	private String name;
 	private int id;
 	private int cash;
+	private int coupons;
 	// used to support stay a night card
 	public boolean stayANight;
 	// the effect of turtleCard
@@ -19,6 +20,7 @@ public class User
 		this.name=name;
 		this.id=userCount++;
 		this.cash=0;
+		this.coupons=0;
 		stayANight=false;
 		beTurtle=false;
 	}
@@ -38,7 +40,14 @@ public class User
 	{
 		this.cash+=d;
 	}
-
+	public int getCoupons()
+	{
+		return this.coupons;
+	}
+	public void modifyCoupons(int d)
+	{
+		this.coupons+=d;
+	}
 	/**
 	 * control() : call it when it's this user's turn
 	 */

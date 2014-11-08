@@ -10,10 +10,10 @@ public class FreeCardSpot extends AbstractLand
 {
 	// the sum of cardAppearRate should be 1
 	public final double[] cardAppearRate=
-	{0.5,0.5};
+	{0.01,0.01,0.98};
 	// the card to give
 	public final int[] cardId=
-	{0,1};
+	{0,1,2};
 	public FreeCardSpot(MapManager mapM,int landId)
 	{
 		super(mapM,6,landId);

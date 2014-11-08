@@ -41,13 +41,14 @@ public class UserMenu
 	public static void showAllProperty()
 	{
 		System.out.println("===所有玩家资产信息===");
-		System.out.println("玩家"+Space(8)+"现金"+Space(6)+"存款"+Space(6)+"地产"+Space(6)+"总额");
+		System.out.println("玩家"+Space(8)+"点券"+Space(6)+"现金"+Space(6)+"存款"+Space(6)+"地产"+Space(6)+"总额");
 		for (int i=0;i<MainController.userTotal;++i)
 		{
 			User nowUser=MainController.userList[i];
 			String buffer="";
 			int total=0,landTotal=0;
 			buffer+=nowUser.getName()+Space(12-nowUser.getName().length());
+			buffer+=nowUser.getCoupons()+Space(10-(""+nowUser.getCoupons()).length());
 			buffer+=nowUser.getCash()+Space(10-(""+nowUser.getCash()).length());
 			total+=nowUser.getCash();
 			buffer+=BankSystem.savings[i]+Space(10-(""+BankSystem.savings[i]).length());
