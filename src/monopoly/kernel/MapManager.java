@@ -17,6 +17,8 @@ public class MapManager
 	//the directions of users
 	//1 is positive direction and -1 is negative direction
 	public int[] userDirection;
+	//used to control dice value
+	public int nextDiceValue=0;
 	MapManager()
 	{
 		this.unitTotal=0;
@@ -44,6 +46,12 @@ public class MapManager
 	 */
 	public void userWalk(int userId, int step)
 	{
+		if (nextDiceValue!=0)
+		{
+			System.out.println("遥控骰子卡效果影响，本次骰子的值为"+nextDiceValue+"。");
+			step=nextDiceValue;
+			nextDiceValue=0;
+		}
 		if (MainController.userList[userId].beTurtle) 
 		{
 			MessageManager.showMessage(MessageManager.MESSAGE,"MapManager",
