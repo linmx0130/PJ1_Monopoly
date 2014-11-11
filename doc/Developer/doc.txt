@@ -104,3 +104,9 @@
 3.4 路障卡 BarrierCard
 	路障卡的typeId=4
 	路障卡可以发动路障效果，在前后8步内安放路障。路障效果由MapManager来支持。
+3.5 购地卡 BuyBuyBuyCard
+	购地卡的typeId=5
+	使用购地卡可以强行购买当前的土地，支付费用给土地拥有者。
+3.6 查税卡 TaxCard
+	查税卡的typeId=6
+	查税卡直接从银行扣款，由其自身effectAciton完成。
