@@ -6,6 +6,7 @@ import monopoly.kernel.MainController;
 public class StayANightCard extends AbstractCard
 {
 	public void endEffectAction(){};
+	public boolean cardQuestion(){return true;};
 	public void effectAction()
 	{
 		MainController.userList[this.subjectUserId].stayANight=true;

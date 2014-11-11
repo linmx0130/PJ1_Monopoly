@@ -101,3 +101,6 @@
 3.3 遥控骰子卡 DiceControlCard
 	转向卡的typeId=3
 	遥控骰子卡的效果需要MapManager类的nextDiceValue来支持，由MapManger.userWalk具体实现。
+3.4 路障卡 BarrierCard
+	路障卡的typeId=4
+	路障卡可以发动路障效果，在前后8步内安放路障。路障效果由MapManager来支持。

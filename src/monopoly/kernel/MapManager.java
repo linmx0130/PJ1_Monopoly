@@ -19,9 +19,21 @@ public class MapManager
 	public int[] userDirection;
 	//used to control dice value
 	public int nextDiceValue=0;
+	//barrierMark : to store barrier
+	private int barrierMark[];
 	MapManager()
 	{
 		this.unitTotal=0;
+	}
+	// involked by MainController, to build user part.
+	void initMapUserPart(int userTotal)
+	{
+		userPosition=new int[userTotal];
+		userDirection=new int[userTotal];
+		for (int i=0;i<userTotal;++i)
+		{
+			userDirection[i]=1;
+		}
 	}
 	/** getDistance
 	 *  get the distance between two users
@@ -59,7 +71,7 @@ public class MapManager
 					"只能走一步！");
 			step=1;
 		}
-		MessageManager.showMessage(MessageManager.MESSAGE,"User",
+		MessageManager.showMessage(MessageManager.MESSAGE,"MapManager",
 						MainController.userList[userId].getName()+"走了"+step+"步！");
 		for (int i=1;i<=step;++i)
 		{
@@ -67,6 +79,13 @@ public class MapManager
 			if (userPosition[userId]>=unitTotal) userPosition[userId]-=unitTotal;
 			if (userPosition[userId]<0) userPosition[userId]+=unitTotal;
 			unitList[userPosition[userId]].passingAction(userId);
+			if (barrierMark[userPosition[userId]]>0)
+			{
+				MessageManager.showMessage(MessageManager.MESSAGE,"MapManager",
+						MainController.userList[userId].getName()+"遇到了路障！被迫止步。");
+				barrierMark[userPosition[userId]]--;
+				break;
+			}
 		}
 		unitList[userPosition[userId]].arrivedAction(userId);
 	}
@@ -79,6 +98,7 @@ public class MapManager
 		sizeX=fin.nextInt();
 		sizeY=fin.nextInt();
 		unitList=new AbstractLand[unitTotal];
+		barrierMark=new int[unitTotal];
 		position=new int[unitTotal][2];
 		for (int i=0;i<unitTotal;++i)
 		{
@@ -119,4 +139,26 @@ public class MapManager
 		}
 		fin.close();
 	};
+
+	public void setBarrier(int pos)
+	{
+		if (pos<0 || pos>=unitTotal)
+		{
+			LogManager.log(LogManager.ERROR,"MapManager",
+						"Illegal set barrier request!");
+			System.exit(1);
+		}
+		barrierMark[pos]++;
+	};
+
+	public int getBarrier(int pos)
+	{
+		if (pos<0 || pos>=unitTotal)
+		{
+			LogManager.log(LogManager.ERROR,"MapManager",
+						"Illegal get barrier request!");
+			System.exit(1);
+		}
+		return barrierMark[pos];
+	}
 };

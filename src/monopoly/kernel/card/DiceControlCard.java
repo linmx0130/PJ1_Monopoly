@@ -25,4 +25,5 @@ public class DiceControlCard extends AbstractCard
 		}while (nextStep>0 && nextStep<=6);
 	}
 	public void endEffectAction(){};
+	public boolean cardQuestion(){return true;};
 };

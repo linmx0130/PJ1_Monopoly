@@ -6,6 +6,7 @@ import monopoly.kernel.MainController;
 public class TurnAroundCard extends AbstractCard
 {
 	public void endEffectAction(){};
+	public boolean cardQuestion(){return true;};
 	public void effectAction()
 	{
 		MainController.map.userDirection[objectUserId]*=-1;

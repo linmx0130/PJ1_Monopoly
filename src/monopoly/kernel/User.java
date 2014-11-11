@@ -72,6 +72,12 @@ MENULOOP:
 				case "4":
 					CardForm.useCardForm(id);
 					break;
+				case "5":
+					UserMenu.showWaring(id);
+					break;
+				case "6":
+					UserMenu.showLand(id);
+					break;
 				case "0":
 					int step=(int)(Math.random()*6+1);
 					MainController.map.userWalk(id,step);

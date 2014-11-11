@@ -5,6 +5,7 @@ package monopoly.kernel.card;
 import monopoly.kernel.MainController;
 public class TurtleCard extends AbstractCard
 {
+	public boolean cardQuestion(){return true;};
 	public void endEffectAction()
 	{
 		MainController.userList[this.objectUserId].beTurtle=false;

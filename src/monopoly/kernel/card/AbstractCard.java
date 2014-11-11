@@ -19,6 +19,11 @@ public abstract class AbstractCard
 	public abstract void effectAction();
 	//the method to end the effect
 	public abstract void endEffectAction();
+	// card's special question
+	// !!!ATTENTION!!! it's part of UI
+	// it will be called by CardForm
+	// return false means give up action
+	public abstract boolean cardQuestion();
 	// construction method
 	public AbstractCard(String name,int id, int lastingTurns,int subjectUserId,int objectUserId)
 	{
