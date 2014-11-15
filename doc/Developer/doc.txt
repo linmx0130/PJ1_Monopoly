@@ -110,3 +110,6 @@
 3.6 查税卡 TaxCard
 	查税卡的typeId=6
 	查税卡直接从银行扣款，由其自身effectAciton完成。
+3.7 掠夺卡 RobberyCard
+	掠夺卡的typeId=7
+	掠夺卡支持从别人手中随机抢夺一张卡牌，完全由CardSystem来实现。

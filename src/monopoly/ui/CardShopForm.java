@@ -10,9 +10,9 @@ public class CardShopForm
 	private static int[] sellingList;
 	//the sum of cardAppearRate should be 1.0
 	//and the length of it should be CardSystem.CARD_TOTAL
-	private static final double[] cardAppearRate={0.2,0.2,0.2,0.2,0.2,0,0};
+	private static final double[] cardAppearRate={0.2,0.2,0.2,0.2,0.2,0,0,0.0};
 	//the price of each card
-	private static final int[] cardPrice={2,2,1,2,1,0,0};
+	private static final int[] cardPrice={2,2,1,2,1,0,0,0};
 	private static final int sizeOfShow=5;
 	private static boolean beSold[];
 	private static void generateSellingList()

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import monopoly.kernel.card.*;
 public class CardSystem
 {
-	public final static int CARD_TOTAL=7;
+	public final static int CARD_TOTAL=8;
 	public static ArrayList<AbstractCard> actionList;
 	// cardProperty[i][j] -> the number of j card of the user i
 	public static int[][] cardProperty;
@@ -19,12 +19,13 @@ public class CardSystem
 		"遥控骰子卡",
 		"路障卡",
 		"购地卡",
-		"查税卡"
+		"查税卡",
+		"掠夺卡"
 	};
 	//needObject will be check by CardForm
 	public static boolean[] needObject=
 	{
-		false,true,true,false,false,false,true
+		false,true,true,false,false,false,true,true
 	};
 	public static void Init()
 	{
@@ -73,6 +74,12 @@ public class CardSystem
 				c.effectAction();
 				break;
 			case 6: //TaxCard
+				if ( objectId == -1 ) return false;
+				if ( MainController.map.getDistance(userId,objectId) > 5) return false;
+				c=new TaxCard(userId,objectId);
+				c.effectAction();
+				break;
+			case 7: //RobberyCard
 				if ( objectId == -1 ) return false;
 				if ( MainController.map.getDistance(userId,objectId) > 5) return false;
 				c=new TaxCard(userId,objectId);

@@ -44,9 +44,9 @@ public class MainController
 			}
 		}
 	}
-	public static void mainLoop() throws Exception
+	public static void mainLoop(String mapFileName) throws Exception
 	{
-		InitGame.showInitGameDialog();
+		InitGame.showInitGameDialog(mapFileName);
 		while (true) 
 		{
 			TimeManager.newDay();

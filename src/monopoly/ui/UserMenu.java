@@ -141,4 +141,24 @@ public class UserMenu
 				break;
 		}
 	}
+	static int SafeInputInteger(Scanner cin, String msg)
+	{
+		boolean acceptinput=true;
+		int ret=0;
+		do 
+		{
+			acceptinput=true;	
+			System.out.print(msg);
+			try
+			{
+				ret=Integer.parseInt(cin.nextLine());
+			}
+			catch (Exception e)
+			{
+				acceptinput=false;
+				System.out.println("输入错误，请重新输入！");
+			}
+		}while (!acceptinput);
+		return ret;
+	}
 };

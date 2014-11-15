@@ -6,19 +6,15 @@ import monopoly.kernel.*;
 import java.util.Scanner;
 public class InitGame
 {
-	public static void showInitGameDialog() throws Exception
+	public static void showInitGameDialog(String mapFileName) throws Exception
 	{
 		Scanner cin=new Scanner(System.in);
 		System.out.println("			$$$ MonoPoly $$$");
 		System.out.println("\t欢迎来到大富翁游戏，在游戏开始之前，您需要做一些设定。");
 
-		//Input map
-		System.out.print("请输入地图文件位置：");
-		String mapFileName=cin.nextLine();
-		MainController.map.loadMap(mapFileName);
 		//Input users
-		System.out.print("游戏人数：");
-		MainController.buildUsers(Integer.parseInt(cin.nextLine()));
+		MainController.buildUsers(UserMenu.SafeInputInteger(cin,"游戏人数："));
+		MainController.map.loadMap(mapFileName);
 		for (int i=0;i<MainController.userTotal;++i)
 		{
 			System.out.print("请输入玩家"+i+"的名字：");
@@ -26,8 +22,7 @@ public class InitGame
 		}
 		
 		//Input cash at first 
-		System.out.print("请输入每个玩家的起始现金金额：");
-		int cashAtFirst=cin.nextInt();
+		int cashAtFirst=UserMenu.SafeInputInteger(cin,"请输入每个玩家的起始现金金额：");
 		for (int i=0;i<MainController.userTotal;++i)
 		{
 			MainController.userList[i].modifyCash(cashAtFirst);
