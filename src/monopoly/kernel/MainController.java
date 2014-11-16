@@ -4,6 +4,8 @@
 package monopoly.kernel;
 import monopoly.ui.*;
 import monopoly.kernel.land.NormalLand;
+import monopoly.ui.MessageManager;
+import monopoly.ui.UserMenu;
 public class MainController
 {
 	public static MapManager map=new MapManager();
@@ -43,6 +45,27 @@ public class MainController
 				}
 			}
 		}
+		int leftUser=0;
+		for (int i=0;i<userTotal;++i)
+		{
+			if (inGame[i]) leftUser++;
+		}
+		if (leftUser==1)
+		{	
+			for (int i=0;i<userTotal;++i)
+			{
+				if (inGame[i]) winGame(i);
+			}
+		}
+	}
+	/* winGame
+	 * a user won the game
+	 */
+	public static void winGame(int userId)
+	{
+		MessageManager.showMessage(MessageManager.MESSAGE,"MainController","恭喜玩家"+userList[userId].getName()+"赢得了游戏！");	
+		UserMenu.haveAPause();
+		System.exit(0);
 	}
 	public static void mainLoop(String mapFileName) throws Exception
 	{

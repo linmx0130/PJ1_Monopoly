@@ -24,6 +24,7 @@ public class UserMenu
 		System.out.println("  4.使用道具卡");
 		System.out.println("  5.前方示警");
 		System.out.println("  6.查看土地详细信息");
+		System.out.println("  7.认输");
 		System.out.println("  0.心满意足，扔骰子前进！");
 		System.out.print("请输入序号：");
 		return cin.next();
@@ -105,11 +106,17 @@ public class UserMenu
 	public static void showLand(int userId)
 	{
 		Scanner cin=new Scanner(System.in);
-		System.out.print("请输入您要查询的位置与您的相对距离（反向用负数，x放弃）:");
+		System.out.print("请输入您要查询的位置与您的相对距离（反向用负数，其他放弃）:");
 		String command=cin.next();
-		if (command.equals("x")) return ;
-		int quesPos=Integer.parseInt(command);
-		
+		int quesPos=0;
+		try
+		{
+			quesPos=Integer.parseInt(command);
+		}
+		catch (Exception e)
+		{
+			return ;
+		}
 		//get correct position
 		quesPos*=MainController.map.userDirection[userId];
 		quesPos+=MainController.map.userPosition[userId];
@@ -141,7 +148,8 @@ public class UserMenu
 				break;
 		}
 	}
-	static int SafeInputInteger(Scanner cin, String msg)
+	// a safe input method for int
+	public static int safeInputInteger(Scanner cin, String msg)
 	{
 		boolean acceptinput=true;
 		int ret=0;
@@ -160,5 +168,12 @@ public class UserMenu
 			}
 		}while (!acceptinput);
 		return ret;
+	}
+	// press Enter to continue
+	public static void haveAPause()
+	{
+		Scanner cin=new Scanner(System.in);
+		System.out.print("按回车后继续。。。");
+		cin.nextLine();
 	}
 };

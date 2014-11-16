@@ -11,6 +11,7 @@ public class CardForm
 	 */
 	public static void useCardForm(int userId)
 	{
+		Scanner cin=new Scanner(System.in);
 		System.out.println(MainController.userList[userId].getName()+"，您拥有的卡有：\n======");
 		for (int i=0;i<CardSystem.CARD_TOTAL;++i)
 		{
@@ -21,9 +22,7 @@ public class CardForm
 			}
 		}
 		System.out.println("======");
-		System.out.print("请输入您想用的卡的编号，其他数字为放弃使用：");
-		Scanner cin=new Scanner(System.in);
-		int choose=cin.nextInt();
+		int choose=UserMenu.safeInputInteger(cin,"请输入您想用的卡的编号，其他数字为放弃使用：");
 		if (choose<0 || choose>=CardSystem.CARD_TOTAL) return ;
 		if (CardSystem.cardProperty[userId][choose]==0) return ;
 
@@ -35,8 +34,7 @@ public class CardForm
 				if (MainController.map.getDistance(userId,i)<=5) 
 				System.out.println("   "+i+"."+MainController.userList[i].getName());
 			}
-			System.out.print("请输入受用者的ID(错误ID为放弃使用)：");
-			int objectId=cin.nextInt();
+			int objectId=UserMenu.safeInputInteger(cin,"请输入受用者的编号(错误编号为放弃使用)：");
 			if (objectId<0||objectId>=MainController.userTotal) return;
 			useCardAtLast(userId,objectId,choose);
 		}else

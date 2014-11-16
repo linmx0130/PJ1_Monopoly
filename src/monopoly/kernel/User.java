@@ -78,6 +78,9 @@ MENULOOP:
 				case "6":
 					UserMenu.showLand(id);
 					break;
+				case "7":
+					MainController.endGame(id);
+					return ;
 				case "0":
 					int step=(int)(Math.random()*6+1);
 					MainController.map.userWalk(id,step);
@@ -92,6 +95,7 @@ MENULOOP:
 				MainController.map.userWalk(id,0);
 				break;
 			}
+			UserMenu.haveAPause();
 		} while (!userInput.equals("0"));
 	}
 }

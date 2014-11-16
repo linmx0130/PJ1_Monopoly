@@ -8,7 +8,7 @@ public class MapViewer
 {
 	private final static int landKindTotal=8;
 	private final static String[] userMark={"α ","β ","γ ","δ ","ε ","ζ ","η ","θ "};
-	private final static String[] userLandMark={"⓪ ","① ","② ","③ ","④ ","⑤ ","⑥ ","⑦ ","⑧ "};
+	private final static String[] userLandMark={"① ","② ","③ ","④ ","⑤ ","⑥ ","⑦ ","⑧ "};
 	private final static String[] landMark=
 	{"","空","◎ ","￥","新","彩","卡","券","道"};
 	/**showBasicMap
