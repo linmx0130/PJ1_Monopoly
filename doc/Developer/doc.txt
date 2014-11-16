@@ -113,3 +113,6 @@
 3.7 掠夺卡 RobberyCard
 	掠夺卡的typeId=7
 	掠夺卡支持从别人手中随机抢夺一张卡牌，完全由CardSystem来实现。
+3.8 均富卡 ReDistributionCard
+	均富卡的typeId=8
+	均富卡使得所有人现金均分，其自身直接实现效果。
